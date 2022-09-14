@@ -3,27 +3,25 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		int x = scanner.nextInt();
-		String Dvik = "";
-		int jaba = 0;
-		int xran = 0;
-		while (x > 0) {
-			if (x % 2 == 1) {
-				x = x / 2;
-				Dvik = "1" + Dvik;
-				jaba += 1;
-				if (xran < jaba) {
-					xran = jaba;
-				}
+		int x10 = scanner.nextInt();
+		String x2 = "";
 
-			} else {
-				x = x / 2;
-				Dvik = "0" + Dvik;
-				jaba = 0;
-			}
 
+		while (x10 > 0) 
+		{
+			x2 = (x10 % 2 == 1)? ("1" + x2) : ("0" + x2);
+			x10 = x10 / 2;
 		}
-		System.out.println(xran);
-		System.out.println(Dvik);
+
+		int lenx2 = x2.length();
+
+		for (int i = 1; i <= lenx2; i++)
+		{
+			
+		}
+
+
+		System.out.println(x2);
+
 	}
 }

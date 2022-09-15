@@ -10,7 +10,7 @@ public class Main2 {
 	System.out.println(a1 + (a2 - a1)*(k - 1));
 
 
-	
-	
+
+
 	}
 }

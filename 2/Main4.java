@@ -22,7 +22,6 @@ public class Main4 {
 
 			x10 = x10 / 2;
 		}
-
 		System.out.println("In Binary -> " + x2);
 		System.out.println("Number of '1' in a row -> " + max);
 

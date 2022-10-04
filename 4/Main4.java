@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Main4 {
     public static boolean proverkaProgres (int a[]) {
        int d = (a[0] - a[1]);
@@ -20,6 +19,5 @@ public class Main4 {
             array[i] = in.nextInt();
         }
         System.out.println("Are the array elements an arithmetic progression? - " + proverkaProgres(array));
-
     }
 }

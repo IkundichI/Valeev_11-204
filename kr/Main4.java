@@ -10,7 +10,7 @@ public class Main4 {
 		for (int i = 0; i < array.length; i++) {
 			for (int j = 0; j < array.length; j++) {
 				array[i][j] = in.nextInt();
-				if (i == j || i + j == n - 1 || (i < j && i + j > n - 1) || (j + i && i + j < n -1)) {
+				if (i == j || i + j == k - 1 || (i < j && i + j > k - 1) || (j + i && i + j < k -1)) {
 					s += array[i][j];
 					x += 1;
 
@@ -21,10 +21,10 @@ public class Main4 {
 		}
 		if (x != 0) {
 			double ar = s / x;
-			System.out.println(ar)
+			System.out.println(ar);
 		}
 		else {
-			System.out.println("false")
+			System.out.println("false");
 		}
 	
 

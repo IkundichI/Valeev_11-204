@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main2 {
+public class Main4 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		int k = in.nextInt();

@@ -19,7 +19,7 @@ public class Main4 {
             System.out.println(Arrays.toString(matrix[i]));
         }
         int count = 0;
-        int s = 0;
+        double s = 0;
         switch (whatArey) {
 
             case "green":

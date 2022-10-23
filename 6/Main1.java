@@ -7,7 +7,8 @@ public class Main1 {
         int arrayLength = array.length;
         int count = 0;
         for (int i = 0; i < arrayLength; i++) {
-            for (int j = 1; j < (arrayLength - i); j++) {
+            count++;
+            for (int j = 1; j < (arrayLength); j++) {
                 if (array[j - 1] > array[j]) {
                     temporary = array[j - 1];
                     array[j - 1] = array[j];
@@ -26,7 +27,9 @@ public class Main1 {
         int arrayLength = array.length;
         for (int i = 0; i < arrayLength; i++) {
             biloLi = false;
+            count++;
             for (int j = 1; j < (arrayLength - i); j++) {
+                count++;
                 if (array[j - 1] > array[j]) {
                     temporary = array[j - 1];
                     array[j - 1] = array[j];

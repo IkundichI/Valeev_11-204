@@ -2,47 +2,38 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main1 {
-    public static int[] bubleSort(int[] array) {
+    public static int[] bubbleSort(int[] array) {
         int temporary;
         int arrayLength = array.length;
         int count = 0;
         for (int i = 0; i < arrayLength; i++) {
-            count++;
-            for (int j = 1; j < (arrayLength); j++) {
-                if (array[j - 1] > array[j]) {
-                    temporary = array[j - 1];
-                    array[j - 1] = array[j];
+            for (int j = 0; j < arrayLength; j++) {
+                count++;
+                if (array[i] < array[j]) {
+                    temporary = array[i];
+                    array[i] = array[j];
                     array[j] = temporary;
                 }
-                count++;
             }
         }
-        System.out.println("Number of iterations in Bubble Sort - " + count);
+        System.out.println("Number of iterations in Bubble Sort - " + count + ": " + Arrays.toString(array));
         return array;
     }
-    public static int[] bubleSortOpti(int[] array) {
-        boolean biloLi;
-        int count = 0;
+    public static int[] bubbleSortOptimized(int[] array) {
         int temporary;
         int arrayLength = array.length;
+        int count = 0;
         for (int i = 0; i < arrayLength; i++) {
-            biloLi = false;
-            count++;
-            for (int j = 1; j < (arrayLength - i); j++) {
+            for (int j = i + 1; j < arrayLength; j++) {
                 count++;
-                if (array[j - 1] > array[j]) {
-                    temporary = array[j - 1];
-                    array[j - 1] = array[j];
+                if (array[i] > array[j]) {
+                    temporary = array[i];
+                    array[i] = array[j];
                     array[j] = temporary;
-                    biloLi = true;
                 }
-                count++;
-            }
-            if (biloLi == false) {
-                break;
             }
         }
-        System.out.println("Number of iterations in Oprimized Bubble Sort - " + count);
+        System.out.println("Number of iterations in Oprimized Bubble Sort - " + count + ": " + Arrays.toString(array));
         return array;
     }
     public static void main(String[] args) {
@@ -52,12 +43,12 @@ public class Main1 {
         int [] arrayFirst = new int[k];
         int [] arraySecond = new int[k];
         for (int i = 0; i < k; i++) {
-            System.out.print("Enter " + i + " elemet - ");
+            System.out.print("Enter " + (i + 1) + " elemet - ");
             arrayFirst[i] = in.nextInt();
             arraySecond[i] = arrayFirst[i];
         }
         System.out.println(Arrays.toString(arrayFirst));
-        System.out.println(Arrays.toString(bubleSort(arrayFirst)));
-        System.out.println(Arrays.toString(bubleSortOpti(arraySecond)));
+        bubbleSort(arrayFirst);
+        bubbleSortOptimized(arraySecond);
     }
 }

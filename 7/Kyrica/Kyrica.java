@@ -71,7 +71,7 @@ public class Kyrica {
         else {
             k3.poroda = k2.poroda;
         }
-        k3.dlinaOfKrilo = random.nextInt(Math.min(k1.dlinaOfKrilo, k2.dlinaOfKrilo), Math.max(k1.dlinaOfKrilo, k2.dlinaOfKrilo) + 1);
+        k3.dlinaOfKrilo = random.nextInt(Math.max(k1.dlinaOfKrilo, k2.dlinaOfKrilo) + Math.min(k1.dlinaOfKrilo, k2.dlinaOfKrilo) );
         return k3;
     }
 

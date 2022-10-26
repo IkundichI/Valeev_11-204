@@ -40,11 +40,11 @@ public class Kyrica {
         if (k1.age < 0.3 || k2.age < 0.3) {
             throw new RuntimeException("Курицы не готовы к размножению, трай эгейн лейтер...");
         }
-        Kyrica k3 = new Kyrica(0, k1.colorOfPeria, k1.boleetLi, random.nextInt(500, 600), k1.dlinaOfKrilo, k1.poroda);
+        Kyrica k3 = new Kyrica(0, k1.colorOfPeria, k1.boleetLi, random.nextInt(200) + 400, k1.dlinaOfKrilo, k1.poroda);
         if (k1.age > 2 || k2.age > 2 || k2.boleetLi || k1.boleetLi) {
             k3.boleetLi = true;
         }
-        random1 = random.nextInt(0, 5);
+        random1 = random.nextInt(5);
         switch (random1) {
             case 1:
                 k3.colorOfPeria = "red";
@@ -64,7 +64,7 @@ public class Kyrica {
             default:
                 k3.colorOfPeria = "brown";
         }
-        random1 = random.nextInt(0, 2);
+        random1 = random.nextInt(2);
         if (random1 == 0) {
             k3.poroda = k1.poroda;
         }

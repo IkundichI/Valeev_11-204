@@ -88,26 +88,26 @@ public class Kyrica {
         age += 0.4;
     }
 
-    public void nestiYachki() throws KyricaExceprion{
+    public void nestiYachki() throws KyricaException {
         if (poroda == "Яичная" && age >= 0.4 && countOfYachki <= 10) {
             countOfYachki += 3;
             if (countOfYachki > 10) {
-                throw new KyricaExceprion("Место под курицей переполнено, заберите яйцы");
+                throw new KyricaException("Место под курицей переполнено, заберите яйцы");
             }
         }
         System.out.println("Количесвто яиц у курицы - " + countOfYachki);
     }
-    public void zabratYachki(int count) throws KyricaExceprion {
+    public void zabratYachki(int count) throws KyricaException {
 
         if (count < 0) {
-            throw new KyricaExceprion("Нельзя забрать отрицательное число яиц! Ты чего...");
+            throw new KyricaException("Нельзя забрать отрицательное число яиц! Ты чего...");
         }
         else if (countOfYachki >= count) {
             countOfYachki -= count;
             System.out.println("Количество яиц у курицы - " + countOfYachki);
         }
         else {
-            throw new KyricaExceprion("У курицы нет столько яиц...подождите пока яйцы появятся");
+            throw new KyricaException("У курицы нет столько яиц...подождите пока яйцы появятся");
         }
     }
 

@@ -87,7 +87,13 @@ public class Kyrica {
         ves += 10;
         age += 0.4;
     }
-
+    public static void metod(Kyrica k1) throws KyricaException{
+        try {
+            int a = 1/0;
+        } catch (ArithmeticException e) {
+            throw new KyricaException("tuta bil vizvana kakay-to shtuka shtodi bilo", e);
+        }
+    }
     public void nestiYachki() throws KyricaException {
         if (poroda == "Яичная" && age >= 0.4 && countOfYachki <= 10) {
             countOfYachki += 3;

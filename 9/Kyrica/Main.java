@@ -8,7 +8,8 @@ public class Main {
         k1.nestiYachki();
         k1.nestiYachki();
         k1.nestiYachki();
-        k1.nestiYachki();
-        //k1.zabratYachki(-1);
+        //k1.zabratYachki(20);
+        //Kyrica.metod(k1);
+
     }
 }

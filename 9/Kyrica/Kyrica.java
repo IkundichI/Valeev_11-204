@@ -89,8 +89,8 @@ public class Kyrica {
     }
     public static void metod(Kyrica k1) throws KyricaException{
         try {
-            int a = 1/0;
-        } catch (ArithmeticException e) {
+            metod(k1);
+        } catch (StackOverflowError e) {
             throw new KyricaException("tuta bil vizvana kakay-to shtuka shtodi bilo", e);
         }
     }

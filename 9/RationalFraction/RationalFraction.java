@@ -26,7 +26,6 @@ public class RationalFraction {
         if (denominator == 0) {
             throw new RuntimeException("Division by 0 is forbidden! Learn math. ");
         }
-        reduce();
     }
 
     public RationalFraction add(RationalFraction f1){
@@ -95,7 +94,7 @@ public class RationalFraction {
         return (double) numerator/denominator;
     }
     public boolean equals(RationalFraction f1) {
-        return (f1.getDenominator() == denominator && f1.numerator == numerator) ? true : false;
+        return (f1.value() == value());
     }
     public int numberPart() {
         return numerator/denominator;

@@ -17,22 +17,7 @@ public class Kyrica {
         this.ves = ves;
         this.dlinaOfKrilo = dlinaOfKrilo;
         this.poroda = poroda;
-        this.countOfYachki = 0;
     }
-    public Kyrica(double age, String colorOfPeria, boolean boleetLi, double ves, int dlinaOfKrilo, String poroda, int countOfYachki) {
-        this(age, colorOfPeria, boleetLi, ves, dlinaOfKrilo, poroda);
-        this.countOfYachki = countOfYachki;
-
-    }
-
-    public boolean getBoletLi() {
-        return boleetLi;
-    }
-
-    public void setBoleetLi(boolean boleetLi) {
-        this.boleetLi = boleetLi;
-    }
-
 
     public static Kyrica sosdatNewKyrica(Kyrica k1, Kyrica k2) {
         Random random = new Random();
@@ -74,7 +59,18 @@ public class Kyrica {
         k3.dlinaOfKrilo = random.nextInt(Math.max(k1.dlinaOfKrilo, k2.dlinaOfKrilo) + Math.min(k1.dlinaOfKrilo, k2.dlinaOfKrilo) );
         return k3;
     }
-
+    public int skolikoYachnits() throws KyricaException{
+        try {
+            if (countOfYachki == 0) {
+                return 1/0;
+            }
+            else {
+                return countOfYachki/2;
+            }
+        } catch (ArithmeticException e) {
+            throw new KyricaException("Нет яиц", e);
+        }
+    }
     public void krikOfKyrica() {
         System.out.println("Кудах тах тах");
         if (age > 1 && age < 2) {
@@ -86,13 +82,6 @@ public class Kyrica {
         System.out.println("Я клевать зерно... и расти чтобы стать большой курица");
         ves += 10;
         age += 0.4;
-    }
-    public static void metod(Kyrica k1) throws KyricaException{
-        try {
-            metod(k1);
-        } catch (StackOverflowError e) {
-            throw new KyricaException("tuta bil vizvana kakay-to shtuka shtodi bilo", e);
-        }
     }
     public void nestiYachki() throws KyricaException {
         if (poroda == "Яичная" && age >= 0.4 && countOfYachki <= 10) {

@@ -2,16 +2,10 @@ package RationalFraction;
 
 public class Main {
     public static void main(String[] args) {
-        RationalFraction r1 = new RationalFraction(1, 2);
-        RationalFraction r2 = new RationalFraction(2, 8);
-        System.out.println(r1.mult(r2) + "      " + r2.mult(r1));
-//        System.out.println(r1.sub(r2) + "       " + r2.sub(r1));
-//        System.out.println(r1.add(r2) + "       " + r2.add(r1));
-//        System.out.println(r1.div(r2) + "       " + r2.div(r1));
-//
-
-
-
-
+        RationalFraction r1 = new RationalFraction(1, 1000000000);
+        RationalFraction r2 = new RationalFraction(1, 1000000001);
+        System.out.println(r1);
+        System.out.println(r2);
+        System.out.println(r1.equals(r2));
     }
 }

@@ -105,15 +105,11 @@ public class ComplexNumber {
         return Math.sqrt(realPart*realPart + imaginaryPart*imaginaryPart);
     }
     public double arg() {
-        return (Math.atan(imaginaryPart/realPart));
+        return (Math.atan2(imaginaryPart, realPart));
     }
     public ComplexNumber pow(double k) {
         double a = Math.pow(length(), k) * Math.cos(arg()*k);
         double b = Math.pow(length(), k) * Math.sin(arg()*k);
-        if (k % 2 != 0 && realPart < 0) {
-            a *= (-1);
-            b *= (-1);
-        }
         ComplexNumber rez = new ComplexNumber(a, b);
         return rez;
 

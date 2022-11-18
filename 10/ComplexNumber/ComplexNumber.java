@@ -70,6 +70,12 @@ public class ComplexNumber {
     @Override
     public String toString() {
         String s = "";
+        if ((realPart < 0 && realPart + Math.pow(10, -10) > 0) || (realPart > 0 && realPart - Math.pow(10, -10) < 0)) {
+            return imaginaryPart+"*i";
+        }
+        if ((imaginaryPart < 0 && imaginaryPart + Math.pow(10, -10) > 0) || (imaginaryPart > 0 && imaginaryPart - Math.pow(10, -10) < 0)) {
+            return realPart+"";
+        }
         if (realPart != 0) {
             s += realPart;
             if (imaginaryPart > 0) {

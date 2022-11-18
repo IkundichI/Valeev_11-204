@@ -17,6 +17,7 @@ public class Race {
             }
             i++;
         }
+        System.out.print((rez + 1) + " => "); //Тут выводиться строка, в которой была машинка в файле
         cars[rez].beep();
     }
 }

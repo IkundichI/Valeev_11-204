@@ -13,9 +13,9 @@ public class Main {
         List<Course> courses = new ArrayList<>();
         List<String[]> cs = new ArrayList<>();
         try {
-            Scanner scanner = new Scanner(file); //Чтение студентов
-            Scanner cousreScanner = new Scanner(file2); //Чтение студетнов
-            Scanner sc = new Scanner(file3); // Кому-что
+            Scanner scanner = new Scanner(file);
+            Scanner cousreScanner = new Scanner(file2);
+            Scanner sc = new Scanner(file3);
             while (cousreScanner.hasNextLine()) {
                 String [] ar1 = (cousreScanner.nextLine().split(","));
                 courses.add(new Course(ar1[0], ar1[1]));

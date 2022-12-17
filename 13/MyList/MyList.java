@@ -145,6 +145,22 @@ public class MyList {
         return true;
     }
 
+    public boolean equals(MyList otherList) {
+        sdvigatel();
+        otherList.sdvigatel();
+        if (size() != otherList.size()) {
+            return false;
+        }
+        else {
+            for (int i = 0; i < size(); i++) {
+                if (strings[i] != get(i)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         sdvigatel();

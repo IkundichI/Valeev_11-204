@@ -1,115 +1,82 @@
 package MyList;
 
-
 import java.util.Arrays;
 
 public class MyList {
-    private String[] strings = new String[5];
+    private String[] strochecka = new String[5];
     private int lastFreeIndex = 0;
 
-    private void sdvigatel() {
-        int count = 0;
-        for (int i = 0; i < strings.length; i++) {
-            if (strings[i] != null) {
-                count++;
-            }
+    public boolean add(String s) {
+        if (lastFreeIndex + 1 >= strochecka.length) {
+            String[] newArray = new String[strochecka.length + 5];
+            copyArrays(strochecka, newArray);
+            strochecka = newArray;
         }
-        String[] strings1 = new String[count];
-        int k = 0;
-        for (int i = 0; i < strings.length; i++) {
-            if (strings[i] != null) {
-                strings1[k] = strings[i];
-                k++;
-            }
-        }
-        strings = strings1;
-    }
-
-    public boolean add(String s){
-        if (lastFreeIndex+1>=strings.length){
-            String[] newArray = new String[strings.length+5];
-            strings = newArray;
-        }
-        strings[lastFreeIndex] = s;
+        strochecka[lastFreeIndex] = s;
         lastFreeIndex++;
         return true;
     }
 
-    public String get(int index){
-        return strings[index];
+    public String get(int index) {
+        return strochecka[index];
     }
 
-    private void copyArrays(String[] source, String[] target){
+    private void copyArrays(String[] source, String[] target) {
         for (int i = 0; i < source.length; i++) {
             target[i] = source[i];
         }
     }
 
-    public int size(){
-        sdvigatel();
-        return strings.length;
+    public int size() {
+        if (lastFreeIndex == 0) {
+            int count = 0;
+            for (int i = 0; i < 10; i++) {
+                if(strochecka[i] != null){
+                    count++;
+                }
+            }
+            return count;
+        }
+        return lastFreeIndex;
     }
 
-    public boolean addAll(MyList otherList) {
+    boolean addAll(MyList otherList) {
         for (int i = 0; i < otherList.size(); i++) {
-            add(otherList.get(i));
+            if (lastFreeIndex + 1 >= strochecka.length) {
+                String[] newArray = new String[strochecka.length + 10];
+                copyArrays(strochecka, newArray);
+                strochecka = newArray;
+            }
+            strochecka[lastFreeIndex] = otherList.get(i);
+            lastFreeIndex++;
         }
         return true;
     }
 
-    public void clear() {
-        strings = new String[10];
-        sdvigatel();
+    void clear() {
+        String[] newArray = new String[10];
+        strochecka = newArray;
+        lastFreeIndex = 0;
     }
 
-    public boolean contains(String s) {
+    boolean contains(String s) {
         for (int i = 0; i < size(); i++) {
-            if (strings[i].equals(s)) {
+            if (strochecka[i].equals(s)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean isEmpty() {
-        sdvigatel();
-        for (int i = 0; i < size(); i++) {
-            if (strings[i] != null) {
-                return false;
-            }
+    boolean containsAll(MyList otherList) {
+        if (otherList.strochecka.length > strochecka.length) {
+            return false;
         }
-        return true;
-    }
-
-    public int indexOf(String s) {
-        for (int i = 0; i < size(); i++) {
-            if (strings[i].equals(s)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public String remove(int index) {
-        String [] massivchik = new String[size()-1];
-        int k = 0;
-        String save = strings[index];
-        for (int i = 0; i < size(); i++) {
-            if (i != index) {
-                massivchik[k] = strings[i];
-                k++;
-            }
-        }
-        strings = massivchik;
-        sdvigatel();
-        return save;
-    }
-
-    public boolean containsAll(MyList otherList) {
+        boolean ans;
         for (int i = 0; i < otherList.size(); i++) {
-            boolean ans = false;
-            for (int j = 0; j < size(); j++) {
-                if (strings[j].equals(otherList.get(i))) {
+            ans = false;
+            for (int j = 0; j < strochecka.length; j++) {
+                if (otherList.get(i).equals(get(j))) {
                     ans = true;
                     break;
                 }
@@ -118,52 +85,76 @@ public class MyList {
                 return false;
             }
         }
-
         return true;
-
     }
 
-    public boolean remove(String s) {
-        int k = indexOf(s);
-        if (k != -1) {
-            remove(k);
-            return true;
+    boolean isEmpty() {
+        return lastFreeIndex == 0;
+    }
+
+    int indexOf(String s) {
+        for (int i = 0; i < size(); i++) {
+            if (strochecka[i].equals(s)) {
+                return i;
+            }
         }
-        return false;
+        return -1;
     }
 
-    public boolean removeAll(MyList otherList) {
+    String remove(int index) {
+        String returnString = strochecka[index];
+        strochecka[index] = null;
+        String tmp;
+        for (int i = index; i < size(); ++i) {
+            tmp = strochecka[i];
+            strochecka[i] = strochecka[i + 1];
+            strochecka[i + 1] = tmp;
+        }
+        lastFreeIndex--;
+        return returnString;
+    }
+
+    boolean remove(String s) {
+        for (int i = 0; i < strochecka.length; i++) {
+            if (strochecka[i].equals(s)) {
+                remove(i);
+                break;
+            }
+        }
+        return true;
+    }
+
+    boolean removeAll(MyList otherList) {
         for (int i = 0; i < otherList.size(); i++) {
             for (int j = 0; j < size(); j++) {
-                if (strings[j] != null && otherList.get(i) != null && strings[j].equals(otherList.get(i))) {
-                    strings[j] = null;
+                if (get(j).equals(otherList.get(i))) {
+                    remove(j);
                 }
             }
-
         }
-        sdvigatel();
         return true;
     }
 
     public boolean equals(MyList otherList) {
-        sdvigatel();
-        otherList.sdvigatel();
         if (size() != otherList.size()) {
             return false;
-        }
-        else {
+        } else {
             for (int i = 0; i < size(); i++) {
-                if (strings[i] != get(i)) {
+                if (get(i) != otherList.get(i)) {
                     return false;
                 }
             }
+            return true;
         }
-        return true;
     }
 
     @Override
     public String toString() {
-        sdvigatel();
-        return Arrays.toString(strings);
+        String[] newArray = new String[lastFreeIndex];
+        for (int i = 0; i < lastFreeIndex; i++) {
+            newArray[i] = strochecka[i];
+        }
+        return Arrays.toString(newArray);
     }
+
 }

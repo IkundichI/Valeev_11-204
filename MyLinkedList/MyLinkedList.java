@@ -148,11 +148,40 @@ public class MyLinkedList<T> {
 	}
 
 	public T set(int index, T elem) {
+
 		if (index < 0 || index >= size()) {
 			throw new IndexOutOfBoundsException();
 		}
 		Node<T> current = firstNode;
+		T link = null;
+		int count = 0;
+		while (count != index && current.getNext() != null) {
+			current = current.getNext();
+			count++;
+		}
+		link = current.getValue();
+		current.setValue(elem);
+		return link;
+	}
 
+	public MyLinkedList<T> sublist(int fromIndex, int toIndex) {
+		if (fromIndex == toIndex) {
+			return new MyLinkedList<T>();
+		}
+		if (fromIndex < 0 || toIndex > size() || fromIndex > toIndex) {
+			throw new IndexOutOfBoundsException();
+		}
+		MyLinkedList<T> currentList = new MyLinkedList<T>();
+		Node<T> current = firstNode;
+		int count = 0;
+		while (current.getNext() != null) {
+			if (count >= fromIndex && count < toIndex) {
+				currentList.add(current.getValue());
+			}
+			current = current.getNext();
+			count++;
+		}
+		return currentList;
 	}
 
 	public int lastIndexOf(T elem) {
@@ -188,4 +217,6 @@ public class MyLinkedList<T> {
 		return str;
 
 	}
+
+	
 }

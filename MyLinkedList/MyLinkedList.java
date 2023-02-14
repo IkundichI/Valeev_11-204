@@ -1,8 +1,5 @@
 package MyLinkedList;
 
-import java.lang.reflect.Array;
-import java.util.regex.Pattern;
-
 public class MyLinkedList<T> {
 	private Node<T> firstNode;
 
@@ -131,19 +128,15 @@ public class MyLinkedList<T> {
 		}
 		Node<T> current = otherList.firstNode;
 		while (current.getNext() != null) {
-			current = current.getNext();
-			while (contains(current.getValue())) {
-				remove(current.getValue());
-			}
-		}
-		current = otherList.firstNode;
-		while (current.getNext() != null) {
-			while (contains(current.getValue())) {
-				remove(current.getValue());
-			}
-			current = current.getNext();
-		}
 
+			while (contains(current.getValue())) {
+				remove(current.getValue());
+			}
+			current = current.getNext();
+		}
+		while (contains(current.getValue())) {
+			remove(current.getValue());
+		}
 		return true;
 	}
 
@@ -188,18 +181,32 @@ public class MyLinkedList<T> {
 		if (!contains(elem)) {
 			return -1;
 		}
-		int count = 0;
 		int index = 0;
+		int count = 0;
 		Node<T> current = firstNode;
-		while (index < size() - 1) {
+		while (current.getNext() != null) {
 			if (current.getValue().equals(elem)) {
 				index = count;
 			}
 			count++;
+			current = current.getNext();
+		}
+		if (current.getValue().equals(elem)) {
+			index = count;
 		}
 		return index;
 
 
+	}
+
+	public Object[] toArray() {
+		Object[] array = new Object[size()];
+		int id = 0;
+		for (Node<T> i = firstNode; i != null; i = i.getNext()) {
+			array[id] = i.getValue();
+			id++;
+		}
+		return array;
 	}
 
 	@Override
@@ -218,5 +225,27 @@ public class MyLinkedList<T> {
 
 	}
 
-	
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof MyLinkedList)) {
+			return false;
+		}
+		MyLinkedList other = (MyLinkedList) o;
+		if (this.size() != other.size()) {
+			return false;
+		}
+		Node<T> currentNode = this.firstNode;
+		Node<T> otherCurrentNode = other.firstNode;
+		while (currentNode != null) {
+			if (!currentNode.getValue().equals(otherCurrentNode.getValue())) {
+				return false;
+			}
+			currentNode = currentNode.getNext();
+			otherCurrentNode = otherCurrentNode.getNext();
+		}
+		return true;
+	}
 }

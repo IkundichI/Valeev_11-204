@@ -1,4 +1,4 @@
-package MyLinkedList;
+package MuLinkedList;
 
 
 public class Node<T> {

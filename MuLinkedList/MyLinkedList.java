@@ -1,4 +1,6 @@
-package MyLinkedList;
+package MuLinkedList;
+
+import java.util.Comparator;
 
 public class MyLinkedList<T> {
 	private Node<T> firstNode;
@@ -123,21 +125,20 @@ public class MyLinkedList<T> {
 	}
 
 	public boolean removeAll(MyLinkedList<T> otherList) {
-		if (!containsAll(otherList)) {
-			return false;
-		}
+		boolean modified = false;
 		Node<T> current = otherList.firstNode;
 		while (current.getNext() != null) {
 
 			while (contains(current.getValue())) {
 				remove(current.getValue());
+				modified = true;
 			}
 			current = current.getNext();
 		}
 		while (contains(current.getValue())) {
 			remove(current.getValue());
 		}
-		return true;
+		return modified;
 	}
 
 	public T set(int index, T elem) {
@@ -197,6 +198,38 @@ public class MyLinkedList<T> {
 		return index;
 
 
+	}
+
+	public void sort(Comparator<? super T> c) {
+		if (firstNode == null) {
+			return;
+		}
+		boolean swapped;
+		do {
+			swapped = false;
+			Node<T> prevNode = null;
+			Node<T> currNode = firstNode;
+			Node<T> nextNode = firstNode.getNext();
+
+			while (nextNode != null) {
+				if (c.compare(currNode.getValue(), nextNode.getValue()) > 0) {
+					if (prevNode != null) {
+						prevNode.setNext(nextNode);
+					} else {
+						firstNode = nextNode;
+					}
+					currNode.setNext(nextNode.getNext());
+					nextNode.setNext(currNode);
+					prevNode = nextNode;
+					nextNode = currNode.getNext();
+					swapped = true;
+				} else {
+					prevNode = currNode;
+					currNode = nextNode;
+					nextNode = nextNode.getNext();
+				}
+			}
+		} while (swapped);
 	}
 
 	public Object[] toArray() {

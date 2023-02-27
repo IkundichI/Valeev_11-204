@@ -1,4 +1,4 @@
-package MuLinkedList;
+package hw1;
 
 import java.util.Comparator;
 

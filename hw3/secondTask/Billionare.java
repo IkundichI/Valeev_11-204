@@ -1,10 +1,10 @@
-package hw1.secondTask;
+package hw3.secondTask;
 
 
 public class Billionare {
     public int rank;
     public String personName;
-    public int age;
+    public double age;
     public int finalWorth;
     public String category;
     public String source;
@@ -16,7 +16,7 @@ public class Billionare {
     public String gender;
     public String birthDate;
     public String title;
-    public int philanthropyScore;
+    public double philanthropyScore;
 
     @Override
     public String toString() {
@@ -39,9 +39,9 @@ public class Billionare {
                 '}';
     }
 
-    public Billionare(int rank, String personName, int age, int finalWorth, String category,
+    public Billionare(int rank, String personName, double age, int finalWorth, String category,
                       String source, String country, String state, String city, String organization,
-                      boolean selfMade, String gender, String birthDate, String title, int philanthropyScore) {
+                      boolean selfMade, String gender, String birthDate, String title, double philanthropyScore) {
         this.rank = rank;
         this.personName = personName;
         this.age = age;

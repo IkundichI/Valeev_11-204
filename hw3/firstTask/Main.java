@@ -1,4 +1,4 @@
-package hw1.firstTask;
+package hw3.firstTask;
 
 public class Main {
     public static void main(String[] args) {

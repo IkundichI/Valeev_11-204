@@ -1,4 +1,4 @@
-package hw1.firstTask;
+package hw3.firstTask;
 
 import java.util.Iterator;
 

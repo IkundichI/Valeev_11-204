@@ -1,56 +1,69 @@
-package hw1.secondTask;
+package hw3.secondTask;
 
-import java.util.AbstractCollection;
-import java.util.Iterator;
+import java.util.*;
 
 public class ModifiableCollection<T> extends AbstractCollection<T> {
-    private T[] elements;
+    private T[] element;
     private int size;
+
     public ModifiableCollection() {
-        this.elements = (T[]) new Object[0];
+        this.element = (T[]) new Object[10];
         this.size = 0;
     }
-    public ModifiableCollection(T[] elements) {
-        this.elements = elements;
-        this.size = elements.length;
-    }
 
-    public boolean add(T element) {
-        if (size == elements.length) {
-            T[] new_elements = (T[]) new Object[(elements.length * 2) + 2];
-            for (int i = 0; i < elements.length; i++) {
-                new_elements[i] = elements[i];
-            }
-            elements = new_elements;
-        }
-        elements[size] = element;
-        size++;
-        return true;
+    public ModifiableCollection(int capacity) {
+        this.element = (T[]) new Object[capacity];
+        this.size = 0;
     }
 
     public int size() {
         return size;
     }
 
+    public boolean add(T item) {
+        if (size == element.length) {
+            T[] newItems = (T[]) new Object[(element.length * 2) + 2];
+            for (int i = 0; i < element.length; i++) {
+                newItems[i] = element[i];
+            }
+            element = newItems;
+        }
+        element[size++] = item;
+        return true;
+    }
+
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
-            private int current_index = 0;
+        return new ModifiableIterator();
+    }
 
-            public boolean hasNext() {
-                return current_index < size;
-            }
+    private class ModifiableIterator implements Iterator<T> {
+        private int cursor = 0;
+        private boolean canRemove = false;
 
-            public T next() {
-                T result = elements[current_index];
-                current_index++;
-                return result;
-            }
+        public boolean hasNext() {
+            return cursor < size;
+        }
 
-            public void remove() {
-                for (T elem: elements) {
-                    if ()
-                }
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
             }
-        };
+            T item = element[cursor++];
+            canRemove = true;
+            return item;
+        }
+
+        public void remove() {
+            if (!canRemove) {
+                throw new IllegalStateException();
+            }
+            cursor--;
+            size--;
+            for (int i = cursor; i < size; i++) {
+                element[i] = element[i+1];
+            }
+            element[size] = null;
+            canRemove = false;
+        }
     }
 }

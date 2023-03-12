@@ -1,4 +1,4 @@
-package hw1.secondTask;
+package hw3.secondTask;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,14 +7,14 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         ModifiableCollection<Billionare> collection = new ModifiableCollection<>();
-        try (Scanner scanner = new Scanner(new File("output.csv"))) {
+        try (Scanner scanner = new Scanner(new File("neww.csv"))) {
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String[] lineArray = scanner.nextLine().split(";");
                 if (lineArray.length > 1) {
                     int rank = (lineArray[0] != null && lineArray[0] != "")  ? Integer.parseInt(lineArray[0]) : 0;
                     String personName = lineArray[1] != null ? lineArray[1] : "";
-                    int age = (lineArray[2] != null && lineArray[2] != "") ? Integer.parseInt(lineArray[2]) : 0;
+                    double age = (lineArray[2] != null && lineArray[2] != "") ? Double.parseDouble(lineArray[2]) : 0;
                     int finalWorth = lineArray[3] != null ? Integer.parseInt(lineArray[3]) : 0;
                     String category = lineArray[4] != null ? lineArray[4] : "";
                     String source = lineArray[5] != null ? lineArray[5] : "";
@@ -26,14 +26,40 @@ public class Main {
                     String gender = lineArray[11] != null ? lineArray[11] : "";
                     String birthDate = lineArray[12] != null ? lineArray[12] : "";
                     String title = lineArray[13] != null ? lineArray[13] : "";
-                    int philanthropyScore = lineArray[14] != null ? Integer.parseInt(lineArray[14]) : 0;
-                    collection.add(new Billionare(rank, personName, age, finalWorth, category, source, country, state, city, organization, selfMade, gender, birthDate, title, philanthropyScore));
+                    double philanthropyScore = lineArray[14] != null ? Double.parseDouble(lineArray[14]) : 0;
+                    collection.add(new Billionare(rank, personName, age, finalWorth, category, source, country, state,
+                            city, organization, selfMade, gender, birthDate, title, philanthropyScore));
                 }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         topOrganizationsByPeople(collection);
+        //Тест работы remove()
+        Iterator<Billionare> iterator = collection.iterator();
+        while (iterator.hasNext()) {
+            Billionare billionare = iterator.next();
+            if (billionare.organization.equals("")) {
+                iterator.remove();
+            }
+        }
+        System.out.println("-----");
+        topOrganizationsByPeople(collection);
+        //Тест removeAll()
+        ModifiableCollection<Integer> collection1 = new ModifiableCollection<>();
+        collection1.add(1);
+        collection1.add(2);
+        collection1.add(3);
+        collection1.add(4);
+        ModifiableCollection<Integer> collection2 = new ModifiableCollection<>();
+        collection2.add(3);
+        collection2.add(4);
+        collection1.removeAll(collection2);
+        System.out.println(collection2); //{3, 4}
+        System.out.println(collection1); //{1, 2, 3, 4} -> removeAll({3, 4}) -> {1, 2}
+
+
+
 
 
     }

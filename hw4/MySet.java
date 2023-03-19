@@ -15,12 +15,13 @@ public class MySet<T> extends AbstractSet<T> implements SortedSet<T> {
 		c.toArray(this.elements);
 		Arrays.sort(this.elements, comparator);
 	}
+
 	public MySet(Comparator<? super T> comparator, Class<T> tClass) {
 		this.comparator = comparator;
 		this.elements = (T[]) Array.newInstance(tClass, 0);
 	}
 
-
+	@Override
 	public boolean add(T e) {
 		if (e == null) {
 			return false;
@@ -43,6 +44,25 @@ public class MySet<T> extends AbstractSet<T> implements SortedSet<T> {
 		return true;
 	}
 
+	public boolean remove(Object o) {
+		for (int i = 0; i < elements.length; i++) {
+			if (elements[i].equals(o)) {
+				int index = i;
+				T[] newElements = (T[]) Array.newInstance(elements.getClass().getComponentType(), this.size() - 1);
+				int count = 0;
+				for (int j = 0; j < elements.length; j++) {
+					if (j != index) {
+						newElements[count] = elements[j];
+						count++;
+					}
+				}
+				elements = newElements;
+				return true;
+			}
+		}
+		return false;
+	}
+
 	@Override
 	public Iterator<T> iterator() {
 		return new Iterator<T>() {
@@ -58,10 +78,21 @@ public class MySet<T> extends AbstractSet<T> implements SortedSet<T> {
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				T element = elements[index];
+				current = elements[index];
 				index++;
-				return element;
+				return current;
 			}
+
+			@Override
+			public void remove() {
+				if (current == null) {
+					throw new IllegalStateException();
+				}
+				MySet.this.remove(current);
+				current = null;
+				index--;
+			}
+
 		};
 	}
 

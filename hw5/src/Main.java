@@ -34,8 +34,8 @@ public class Main {
 
 		//Получить и вывести список машин, у которых тип топлива бензин и автоматическая коробка передач (в 1 строчку)
 		carList.stream()
-				 .filter(car -> car.suspension.equals("Automatic") && car.fuelType.equals("Petrol"))
-				 .forEach(car -> System.out.println(car.modelOfCar));
+				  .filter(car -> car.suspension.equals("Automatic") && car.fuelType.equals("Petrol"))
+				  .forEach(car -> System.out.println(car.modelOfCar));
 
 
 		//Получить список цен на машины, перевести их в тип Integer и вывести количество четных значений (в 1 строчку)

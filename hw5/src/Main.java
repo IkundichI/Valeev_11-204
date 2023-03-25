@@ -57,7 +57,7 @@ public class Main {
 
 		//Получить список машин, на которых ездили меньше чем 10 тысяч километров в год. (в 1 строчку)
 		List<Car> carWithLowKmsDriven = carList.stream()
-				  .filter(car -> car.kmsDriven <= ((10000)*((2023) - car.year)))
+				  .filter(car -> car.kmsDriven < ((10000)*((2023) - car.year)))
 				  .toList();
 
 

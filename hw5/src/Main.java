@@ -29,7 +29,7 @@ public class Main {
 		}
 
 
-		List<Car> carList = cars.stream().toList(); //Сделали List из Car из MyStack
+		List<Car> carList = cars.stream().toList(); //Сделали List<Car> из MyStack<Car>
 
 
 		//Получить и вывести список машин, у которых тип топлива бензин и автоматическая коробка передач (в 1 строчку)

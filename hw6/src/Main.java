@@ -1,5 +1,3 @@
-package hw6.src;
-
 import java.util.*;
 
 public class Main {
@@ -7,7 +5,7 @@ public class Main {
         Map<String, String> phoneNumbersPeople = new HashMap<>();
         phoneNumbersPeople.put("Azat", "+7 (800) 555-35-35");
         phoneNumbersPeople.put("Timur", "+7 (888) 678-22-22");
-        phoneNumbersPeople.put("Marat", "8 800 555 35 35");
+        phoneNumbersPeople.put("Marat", "+7 (800) 555-35-35");
         phoneNumberPrinter(phoneNumbersPeople);
         phoneNumberChecker(phoneNumbersPeople);
         Map<String, String> phoneNumbersPeople1 = new HashMap<>();

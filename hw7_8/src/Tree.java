@@ -125,6 +125,6 @@ public class Tree {
 			level++;
 		}
 		randomAccessFile.close();
-	}
+	} //при вызове стрирает старые данные, и строит только последнее
 
 }

@@ -1,5 +1,6 @@
 package hw7_8.src;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.LinkedList;
@@ -93,8 +94,11 @@ public class Tree {
 	}
 
 	public void levelOrderTraversal() throws IOException {
+		File file = new File("fileWithTree.txt");
+		file.createNewFile();
 		RandomAccessFile randomAccessFile =
-				  new RandomAccessFile("fileWithTree","rw");
+				  new RandomAccessFile(file,"rw");
+		randomAccessFile.setLength(0);
 		Queue<Tree> queue = new LinkedList<>();
 		queue.add(this);
 		int level = 1;

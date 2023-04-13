@@ -94,10 +94,8 @@ public class Tree {
 	}
 
 	public void levelOrderTraversal() throws IOException {
-		File file = new File("fileWithTree.txt");
-		file.createNewFile();
 		RandomAccessFile randomAccessFile =
-				  new RandomAccessFile(file,"rw");
+				  new RandomAccessFile("fileWithTree.txt","rw");
 		randomAccessFile.setLength(0);
 		Queue<Tree> queue = new LinkedList<>();
 		queue.add(this);

@@ -1,41 +1,24 @@
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Main {
-    //Tests created by @ChatGPT
     public static void main(String[] args) {
-        // Создание новой хэш-карты
-        Map<String, Integer> map = new MyMap<>();
-
-        // Проверка, что карта пуста
-        if (map.isEmpty()) {
-            System.out.println("Карта пуста");
-        }
-
-        // Добавление элементов в карту
-        map.put("один", 1);
-        map.put("два", 2);
-        map.put("три", 3);
-
-        // Получение значения элемента из карты
-        int value = map.get("один");
-        System.out.println("Значение для ключа 'один': " + value);
-
-        // Изменение значения элемента в карте
-        map.put("один", 10);
-        value = map.get("один");
-        System.out.println("Новое значение для ключа 'один': " + value);
-
-        // Удаление элемента из карты
-        map.remove("два");
-        System.out.println("Ключ 'два' был удален");
-
-        // Проверка размера карты
-        System.out.println("Размер карты: " + map.size());
-
-        // Очистка карты
+        Map<Integer, String> map = new MyMap<>();
+        map.put(1, "one");
+        map.put(2, "two");
+        map.put(3, "three");
+        System.out.println(map.remove(2));
+        System.out.println("Значения: ");
+        map.values().forEach(System.out::println);
+        System.out.println("Ключи: ");
+        map.keySet().forEach(System.out::println);
         map.clear();
-        if (map.isEmpty()) {
-            System.out.println("Карта очищена");
-        }
+        map.put(1, "ONE");
+        System.out.println("Entry: ");
+        map.entrySet().forEach(System.out::println);
+        map.put(1, "TWO");
+        System.out.println("Entry: ");
+        map.entrySet().forEach(System.out::println);
+        System.out.println(map.isEmpty());
     }
 }

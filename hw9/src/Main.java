@@ -20,5 +20,6 @@ public class Main {
         System.out.println("Entry: ");
         map.entrySet().forEach(System.out::println);
         System.out.println(map.isEmpty());
+        map.values().forEach(System.out::println);
     }
 }

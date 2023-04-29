@@ -4,7 +4,6 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class MySet<T> extends AbstractSet<T> implements SortedSet<T> {
-
 	private T[] elements;
 	private Comparator<? super T> comparator;
 	private T current;

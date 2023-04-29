@@ -112,23 +112,6 @@ public class MyMap<K extends Comparable<K>,V> implements Map<K,V> {
             }
         }
 
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder();
-            toStringHelper(sb, "", true);
-            return sb.toString();
-        }
-
-        private void toStringHelper(StringBuilder sb, String prefix, boolean isTail) {
-            sb.append(prefix).append(isTail ? "└── " : "├── ").append(key).append("\n");
-            if (left != null) {
-                left.toStringHelper(sb, prefix + (isTail ? "    " : "│   "), right == null);
-            }
-            if (right != null) {
-                right.toStringHelper(sb, prefix + (isTail ? "    " : "│   "), true);
-            }
-        }
-
         public K getKey() {
             return key;
         }
@@ -163,7 +146,7 @@ public class MyMap<K extends Comparable<K>,V> implements Map<K,V> {
 
     @Override
     public boolean isEmpty() {
-        return (size() == 0) ? true : false;
+        return size() == 0;
     }
 
     @Override

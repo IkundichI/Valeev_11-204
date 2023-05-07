@@ -10,16 +10,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class ApiRequestExecutor {
-    public List<CatFact> getCatFactsFromApi(String url) throws IOException {
+    public String getCatFactsFromApi(String url) throws IOException {
         URLConnection urlConnection = new URL(url).openConnection();
-        ObjectMapper objectMapper = new ObjectMapper();
         urlConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
         InputStream inputStream = urlConnection.getInputStream();
         byte[] bytes = new byte[inputStream.available()];
         inputStream.read(bytes);
         String json = new String(bytes);
-        CatFact[] catArray = objectMapper.readValue(json, CatFact[].class);
-        return Arrays.asList(catArray);
+        return json;
 
     }
 }

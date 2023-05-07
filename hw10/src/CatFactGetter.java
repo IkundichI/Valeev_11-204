@@ -2,12 +2,14 @@ import java.util.List;
 
 public class CatFactGetter {
 
-    public void getCatFacts(List<CatFact> catFacts) {
+    public String getCatFacts(List<CatFact> catFacts) {
         int count = 1;
+        StringBuilder stringBuilder = new StringBuilder();
         for (CatFact catFact : catFacts) {
-            System.out.println("Fact " + count + " " + catFact.getText());
+            stringBuilder.append("Fact " + count + " " + catFact.getText() + "\n");
             count++;
         }
+        return stringBuilder.toString();
 
     }
 }

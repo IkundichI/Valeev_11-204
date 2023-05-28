@@ -18,6 +18,7 @@ public class PartitionService {
         for (int i = 0; i < totalSize; i += partitionSize) {
             int end = Math.min(i + partitionSize, totalSize);
             List<Integer> subList = integerList.subList(i, end);
+            //System.out.println(subList);
             CountThread thread = new CountThread(subList);
             thread.start();
             threads.add(thread);

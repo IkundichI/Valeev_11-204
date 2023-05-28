@@ -11,9 +11,11 @@ public class CountThread extends Thread {
     @Override
     public void run() {
         sum = 0;
+        //System.out.println("Thread " + getName() + " started");
         for (Integer integer : integers) {
             sum += integer;
         }
+        //System.out.println("Thread " + getName() + " finished");
     }
 
     public long getSum() {

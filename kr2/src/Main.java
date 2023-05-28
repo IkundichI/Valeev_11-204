@@ -16,6 +16,7 @@ public class Main {
         String json = new String(bytes);
         Drink drink = new ObjectMapper().readValue(json, new TypeReference<>(){});
 
+
         List<Cocktail> cocktailList = Arrays.asList(drink.drinks);
         List<Cocktail> cocktailList1 = cocktailList.stream().filter(cocktail -> isCocktail(cocktail)).collect(Collectors.toList());
         String filename = "cock.txt";
@@ -24,6 +25,7 @@ public class Main {
             writerInsert.write(i + 1 + " - " + cocktailList1.get(i) + "\n");
         }
         writerInsert.close();
+
 
 
 

@@ -8,6 +8,7 @@ public class CountThread extends Thread {
         this.integers = integers;
     }
 
+    @lombok.SneakyThrows
     @Override
     public void run() {
         sum = 0;
@@ -15,6 +16,7 @@ public class CountThread extends Thread {
         for (Integer integer : integers) {
             sum += integer;
         }
+        //sleep(1000);
         //System.out.println("Thread " + getName() + " finished");
     }
 

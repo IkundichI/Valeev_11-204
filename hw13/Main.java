@@ -28,8 +28,11 @@ public class Main {
                 .collect(Collectors.groupingBy(User::getCountry))
                 .values().stream()
                 .limit(2)
-                .flatMap(List::stream)
-                .forEach(System.out::println);
+                .forEach(countryUsers -> {
+                    countryUsers.stream()
+                            .limit(2)
+                            .forEach(System.out::println);
+                });
         System.out.println("----------------------------");
         for (User user : users) {
             System.out.println(user);

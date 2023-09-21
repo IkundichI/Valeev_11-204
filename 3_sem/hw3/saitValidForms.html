@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Форма и проверка палиндрома</title>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    input[type="button"] {
+      background-color: #0074cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0074cc;
+      color: white;
+    }
+
+    h2 {
+      margin-top: 20px;
+    }
+
+    #palindromeResult {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<h1>Form of adding users and checking for palindromes</h1>
+
+
+<form id="inputForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" required><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" required><br>
+
+  <label for="phone">Telephone number:</label>
+  <input type="tel" id="phone" required><br>
+
+  <input type="button" value="Add" onclick="addRow()">
+</form>
+
+<table id="dataTable">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Telephone number</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<h2>Checking for palindromes</h2>
+<form id="palindromeForm">
+  <label for="palindromeText">Input text:</label>
+  <input type="text" id="palindromeText">
+  <input type="button" value="Check" onclick="checkPalindrome()">
+</form>
+<p id="palindromeResult"></p>
+
+<script>
+
+  function addRow() {
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+
+    if (name === '' || email === '' || phone === '') {
+      alert('Please fill in all the fields');
+      return;
+    }
+
+    var table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.rows.length);
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+    cell1.innerHTML = name;
+    cell2.innerHTML = email;
+    cell3.innerHTML = phone;
+
+
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('phone').value = '';
+
+  }
+
+
+  function checkPalindrome() {
+
+    var text = document.getElementById('palindromeText').value.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+    var reversedText = text.split('').reverse().join('');
+
+    if (text === reversedText) {
+      document.getElementById('palindromeResult').innerText = 'This text is a palindrome.';
+    } else {
+      document.getElementById('palindromeResult').innerText = 'This text is not a palindrome.';
+    }
+
+  }
+</script>
+</body>
+</html>

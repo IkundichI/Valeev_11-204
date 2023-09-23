@@ -113,6 +113,10 @@
       alert('Please fill in all the fields');
       return;
     }
+    if (!isValidEmail(email) || !isValidPhoneNumber(phone) || !isValidName(name)) {
+      alert('Check your feald please')
+      return;
+    }
 
     var table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
     var newRow = table.insertRow(table.rows.length);
@@ -128,6 +132,20 @@
     document.getElementById('email').value = '';
     document.getElementById('phone').value = '';
 
+  }
+  function isValidEmail(email) {
+
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
+  }
+  function isValidPhoneNumber(phone) {
+    // Регулярное выражение для проверки телефонного номера в формате +79999999901
+    var phonePattern = /^\+\d{11}$/;
+    return phonePattern.test(phone);
+  }
+  function isValidName(name) {
+    var namePattern = /^[A-Z][a-z]*$/;
+    return namePattern.test(name);
   }
 
 

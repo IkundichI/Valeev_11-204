@@ -1,0 +1,6 @@
+ru/itis/User.class
+ru/itis/Users.class
+ru/itis/User$UserBuilder.class
+ru/itis/NameServlet.class
+ru/itis/SendMessageServlet.class
+ru/itis/GetMessagesServlet.class

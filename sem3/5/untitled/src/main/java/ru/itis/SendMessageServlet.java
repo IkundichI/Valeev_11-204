@@ -49,8 +49,8 @@ public class SendMessageServlet extends HttpServlet {
                 "\n" +
                 "        label {\n" +
                 "            font-weight: bold;\n" +
-                "            display: block; /* Добавляем блочный элемент для label */\n" +
-                "            margin-bottom: 5px; /* Отступ между label и input */\n" +
+                "            display: block; \n" +
+                "            margin-bottom: 5px;\n" +
                 "        }\n" +
                 "\n" +
                 "        input[type=\"text\"] {\n" +
@@ -69,7 +69,7 @@ public class SendMessageServlet extends HttpServlet {
                 "        .button-container {\n" +
                 "            display: flex;\n" +
                 "            justify-content: space-between;\n" +
-                "            margin-top: 10px; /* Отступ между кнопками и полями ввода */\n" +
+                "            margin-top: 10px; \n" +
                 "        }\n" +
                 "\n" +
                 "        input[type=\"submit\"], a.button {\n" +

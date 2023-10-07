@@ -1,8 +1,6 @@
 package ru.itis;
 
 import lombok.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Data

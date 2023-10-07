@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 public class GetMessagesServlet extends HttpServlet {
 
@@ -20,7 +19,7 @@ public class GetMessagesServlet extends HttpServlet {
             resp.sendRedirect("/name");
             return;
         }
-        // Отображение сообщений на странице
+
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
         out.println("<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Messages</title>");

@@ -302,3 +302,13 @@
 0:0:0:0:0:0:0:1 - - [07/Oct/2023:11:28:59 +0300] "POST /untitled/name HTTP/1.1" 302 - http-bio-8080-exec-7 2
 0:0:0:0:0:0:0:1 - - [07/Oct/2023:11:28:59 +0300] "GET /untitled/sendMessage HTTP/1.1" 200 2250 http-bio-8080-exec-8 1
 0:0:0:0:0:0:0:1 - - [07/Oct/2023:11:29:00 +0300] "GET /untitled/getMessages HTTP/1.1" 200 463 http-bio-8080-exec-9 2
+0:0:0:0:0:0:0:1 - - [07/Oct/2023:12:17:56 +0300] "GET /untitled HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [07/Oct/2023:12:17:56 +0300] "GET /untitled/ HTTP/1.1" 200 916 http-bio-8080-exec-3 14
+0:0:0:0:0:0:0:1 - - [07/Oct/2023:12:18:00 +0300] "GET /untitled/name HTTP/1.1" 200 1452 http-bio-8080-exec-4 3
+0:0:0:0:0:0:0:1 - - [07/Oct/2023:12:18:03 +0300] "POST /untitled/name HTTP/1.1" 302 - http-bio-8080-exec-5 6
+0:0:0:0:0:0:0:1 - - [07/Oct/2023:12:18:03 +0300] "GET /untitled/sendMessage HTTP/1.1" 200 2250 http-bio-8080-exec-6 2
+0:0:0:0:0:0:0:1 - - [07/Oct/2023:12:19:04 +0300] "GET /untitled HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [07/Oct/2023:12:19:04 +0300] "GET /untitled/ HTTP/1.1" 200 916 http-bio-8080-exec-3 13
+0:0:0:0:0:0:0:1 - - [07/Oct/2023:12:19:05 +0300] "GET /untitled/name HTTP/1.1" 200 1452 http-bio-8080-exec-4 4
+0:0:0:0:0:0:0:1 - - [07/Oct/2023:12:19:09 +0300] "POST /untitled/name HTTP/1.1" 302 - http-bio-8080-exec-5 5
+0:0:0:0:0:0:0:1 - - [07/Oct/2023:12:19:09 +0300] "GET /untitled/sendMessage HTTP/1.1" 200 2250 http-bio-8080-exec-6 2

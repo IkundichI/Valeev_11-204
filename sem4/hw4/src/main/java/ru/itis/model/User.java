@@ -31,7 +31,7 @@ public class User {
     private boolean terms;
 
     @NotBlank(message = "Phone number is mandatory")
-    @Pattern(regexp = "^((\\+7)+([0-9]){10})$",
+    @Pattern(regexp = "^\\+7-\\d{3}-\\d{3}-\\d{2}-\\d{2}$",
             message = "Phone number must match the pattern +7-XXX-XXX-XX-XX")
     private String phoneNumber;
 

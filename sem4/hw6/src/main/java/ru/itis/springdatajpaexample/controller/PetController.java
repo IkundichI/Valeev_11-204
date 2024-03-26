@@ -18,7 +18,7 @@ public class PetController {
 
     @GetMapping("/pets/findByAgeRangeAndName")
     public List<PetDto> getPets(@RequestParam(name = "start") Integer start, @RequestParam(name = "end") Integer end, @RequestParam(name = "name") String name) {
-        return petRepository.findAllPetWithAgeBetweenAndName(start, end, name)
+        return petRepository.findByAgeBetweenAndName(start, end, name)
                 .stream()
                 .map(PetDto::fromEntity)
                 .collect(Collectors.toList());
